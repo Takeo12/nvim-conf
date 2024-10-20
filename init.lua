@@ -18,9 +18,14 @@ require("vim-options")
 
 require("lazy").setup("plugins")
 
+require("plugins.snippet_keymaps")
 
 
-require("plugins.snippets")
+require("luasnip.loaders.from_vscode").lazy_load({
+	paths = {"~/.config/nvim/snippets" }
+})
+
+
 
 
 
@@ -28,4 +33,8 @@ require("plugins.snippets")
 --vim.cmd.colorscheme "catppuccin-mocha"
 
 -- local builtin = require("telescope.builtin")
+
+
+
+
 

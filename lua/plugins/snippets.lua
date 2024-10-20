@@ -1,11 +1,24 @@
-local ls = require'luasnip'
-local s = ls.snippet
-local t = ls.text_node
+return {
+    -- LuaSnip: The snippet engine
+    {
+        "L3MON4D3/LuaSnip",
+        config = function()
+            -- Load snippets from vim-snippets
+            require("luasnip.loaders.from_vscode").lazy_load({
+		    paths = {"~/.confg/nvim/snippets"}
+	    })
+        end,
+    },
 
--- Create a simple snippet
-ls.add_snippets('all', {
-    s('trigger', { t('This is a snippet!') }),
-})
+    -- vim-snippets: Collection of snippets
+    {
+        "honza/vim-snippets",
+        lazy = true,  -- load when needed
+    },
 
-
-return {}
+    -- Optional: friendly-snippets for additional snippets
+    {
+        "rafamadriz/friendly-snippets",
+        lazy = true,  -- load when needed
+    },
+}
