@@ -7,6 +7,18 @@ vim.cmd("inoremap jk <Esc>")
 vim.keymap.set('n', '<C-n>', ':Neotree toggle <CR>' , {})
 
 
+-- LUASNIP
+
+-- Use <Tab> to jump to the next snippet placeholder
+vim.api.nvim_set_keymap('i', '<Tab>', [[<cmd>lua require'luasnip'.jump(1)<CR>]], {silent = true})
+vim.api.nvim_set_keymap('s', '<Tab>', [[<cmd>lua require'luasnip'.jump(1)<CR>]], {silent = true})
+
+-- Use <Shift-Tab> to jump backwards in snippet placeholders
+vim.api.nvim_set_keymap('i', '<S-Tab>', [[<cmd>lua require'luasnip'.jump(-1)<CR>]], {silent = true})
+vim.api.nvim_set_keymap('s', '<S-Tab>', [[<cmd>lua require'luasnip'.jump(-1)<CR>]], {silent = true})
+
+
+
 
 -- BARBAR MAPPINGS
 
