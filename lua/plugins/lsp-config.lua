@@ -30,6 +30,26 @@ return {
 				capabilities = capabilities
 			})
 
+      lspconfig.texlab.setup({
+        settings = {
+          texlab = {
+            build = {
+              executable = "latexmk",
+              args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+              onSave = false, -- Disable TexLab's compilation as VimTeX handles it
+            },
+            forwardSearch = {
+              executable = "open", -- Open PDF viewer, or use Skim/Zathura if configured
+              args = { "%p" },
+            },
+            lint = {
+              onChange = true,
+            },
+          },
+        },
+      })
+
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})

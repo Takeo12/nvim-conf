@@ -7,13 +7,18 @@ return {
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
-    },
+    }
   },
   {
     "hrsh7th/nvim-cmp",
     config = function()
       local cmp = require("cmp")
-      require("luasnip.loaders.from_vscode").lazy_load()
+      --require("luasnip.loaders.from_vscode").lazy_load()
+      --  require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/lua/snippets/" } })
+      require("luasnip.loaders.from_snipmate").load()
+      require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snippets_path or "~/.config/nvim/lua/snippets/" }
+
+
 
       cmp.setup({
         snippet = {
@@ -35,7 +40,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
-        }, {
           { name = "buffer" },
         }),
       })

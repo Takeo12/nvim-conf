@@ -9,6 +9,7 @@ return {
 			options = {
 				'-pdf', -- Compile to PDF
 				'-interaction=nonstopmode',
+        '-outdir=build',
 				'-synctex=1',
 			},
 		}
